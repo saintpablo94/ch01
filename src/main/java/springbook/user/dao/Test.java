@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.GenericXmlApplicationContext;
 
 import springbook.user.domain.User;
 
@@ -12,10 +13,11 @@ public class Test {
 	public static void main(String[] args) throws ClassNotFoundException,
 			SQLException {
 
-		ApplicationContext context = new AnnotationConfigApplicationContext(CountDaoFactory.class);
+		//ApplicationContext context = new AnnotationConfigApplicationContext(DaoFactory.class);
+		ApplicationContext context = new GenericXmlApplicationContext("beans.xml");
 
 		UserDao userDao = context.getBean("userDao",UserDao.class);
-		CountConnectionMaker countConnectionMaker = context.getBean(CountConnectionMaker.class);
+//		CountConnectionMaker countConnectionMaker = context.getBean(CountConnectionMaker.class);
 	
 		User user = new User().setId("test1").setName("테스트").setPasswordString("married");
 
@@ -27,7 +29,7 @@ public class Test {
 		System.out.println(user2.getName());
 		System.out.println(user2.getPasswordString());
 		
-		System.out.println(countConnectionMaker.getCounter());
+//		System.out.println(countConnectionMaker.getCounter());
 	}
 	
 

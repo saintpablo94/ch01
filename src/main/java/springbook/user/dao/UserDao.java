@@ -12,7 +12,11 @@ public class UserDao {
 
 	private ConnectionMaker	connectionMaker;
 
-	public UserDao(ConnectionMaker connectionMaker) {
+/*	public UserDao(ConnectionMaker connectionMaker) {
+		this.connectionMaker = connectionMaker;
+	}*/
+	
+	public void setConnectionMaker(ConnectionMaker connectionMaker) {
 		this.connectionMaker = connectionMaker;
 	}
 
@@ -31,6 +35,7 @@ public class UserDao {
 		stmt.close();
 		conn.close();
 	}	
+
 
 	public User get(String id) throws ClassNotFoundException, SQLException {
 		Connection conn = connectionMaker.makeConnection();
